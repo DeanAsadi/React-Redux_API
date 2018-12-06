@@ -27,25 +27,46 @@ export function addFilms(film) {
 
 //Reducers-------------------------------------------------------
 export default function filmsReducer(state = initialState, action) {
-  console.log("action", action);
-  console.log("action.payload", action.payload);
-  console.log("state", state);
+  console.log("action--->", action);
+  console.log("action.payload--->", action.payload);
+  console.log("action.type--->", action.type);
 
   switch (action.type) {
-    case "GET_FIMLS_PENDING":
+    case `GET_FIMLS_PENDING`:
       return {
         ...state,
         isLoading: true
       };
-    case "GET_FILMS_FULFILED":
+    case `GET_FILMS_FULFILED`:
       return {
         ...state,
-        films: action.payload
+        isLoading: false,
+        films: action.payload.data
       };
-    case "GET_FIMLS_REJECTED":
+    case `GET_FIMLS_REJECTED`:
       return {
         ...state,
+        isLoading: false,
         error: action.payload
       };
+    case `ADD_FIMLS_PENDING`:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case ` ADD_FILMS_FULFILED `:
+      return {
+        ...state,
+        isLoading: false,
+        films: action.payload
+      };
+    case ` ADD_FILMS_REJECTED `:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
 }
