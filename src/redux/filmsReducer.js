@@ -1,16 +1,17 @@
 import axios from "axios";
 
-//InitailState-------------------
+//InitailState-------------------------------------------------
 const initialState = {
-  people: [],
+  films: [],
   isLoading: false,
   error: []
 };
-//Action Type --------------
+
+//Action Type -------------------------------------------------
 const GET_FILMS = "GET_FILMS";
 const ADD_FILMS = "ADD_FILMS";
 
-//Action creator-------------
+//Action creator------------------------------------------------
 export function getPeople() {
   return {
     type: GET_FILMS,
@@ -22,4 +23,29 @@ export function addFilms(film) {
     type: ADD_FILMS,
     film: film
   };
+}
+
+//Reducers-------------------------------------------------------
+export default function filmsReducer(state = initialState, action) {
+  console.log("action", action);
+  console.log("action.payload", action.payload);
+  console.log("state", state);
+
+  switch (action.type) {
+    case "GET_FIMLS_PENDING":
+      return {
+        ...state,
+        isLoading: true
+      };
+    case "GET_FILMS_FULFILED":
+      return {
+        ...state,
+        films: action.payload
+      };
+    case "GET_FIMLS_REJECTED":
+      return {
+        ...state,
+        error: action.payload
+      };
+  }
 }
