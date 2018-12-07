@@ -9,6 +9,22 @@ class Films extends Component {
 
   render() {
     console.log("films", this.props.films);
+    if (
+      this.props.films !== undefined &&
+      this.props.films.length !== 0 &&
+      this.props.isLoading === true
+    ) {
+      const displayFilms = this.props.films.map((film, index) => {
+        return (
+          <div key={index}>
+            <h3> Films: </h3>
+            <span>{film.title}</span>
+            <span>{film.description}</span>
+          </div>
+        );
+      });
+    }
+
     const displayFilms = this.props.isLoading ? (
       <p> Loading please wait... </p>
     ) : (
