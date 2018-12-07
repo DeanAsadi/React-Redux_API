@@ -21,14 +21,14 @@ export function getPeople() {
 //Reducer ---------------------------------
 
 export default function peopleReducer(state = initialState, action) {
-  console.log("people action.payload ---> ", action.payload);
+  // console.log("people action.payload ---> ", action.payload);
   switch (action.type) {
     case `GET_PEOPLE_PENDING`:
       return {
         ...state,
         isLoading: true
       };
-    case `GET_PEOPLE_FULFILED`:
+    case `GET_PEOPLE_FULFILLED`:
       return {
         ...state,
         isLoading: false,

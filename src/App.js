@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Provider } from "react-redux";
 
 import Films from "./components/films/Films";
+import People from "./components/people/People";
 import store from "./redux/store";
-import "./App.css";
 
 class App extends Component {
   render() {
@@ -12,6 +12,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header" />
           <Films />
+          <People />
         </div>
       </Provider>
     );

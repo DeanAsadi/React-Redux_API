@@ -12,10 +12,10 @@ const GET_FILMS = "GET_FILMS";
 const ADD_FILMS = "ADD_FILMS";
 
 //Action creator------------------------------------------------
-export function getPeople() {
+export function getFilms() {
   return {
     type: GET_FILMS,
-    payload: axios.get("https://ghibliapi.herokuapp.com/people")
+    payload: axios.get("https://ghibliapi.herokuapp.com/films")
   };
 }
 export function addFilms(film) {
@@ -27,9 +27,9 @@ export function addFilms(film) {
 
 //Reducers-------------------------------------------------------
 export default function filmsReducer(state = initialState, action) {
-  console.log("action--->", action);
-  console.log("action.payload--->", action.payload);
-  console.log("action.type--->", action.type);
+  // console.log("action--->", action);
+  // console.log("action.payload--->", action.payload);
+  // console.log("action.type--->", action.type);
 
   switch (action.type) {
     case `GET_FILMS_PENDING`:
@@ -37,7 +37,7 @@ export default function filmsReducer(state = initialState, action) {
         ...state,
         isLoading: true
       };
-    case `GET_FILMS_FULFILED`:
+    case `GET_FILMS_FULFILLED`:
       return {
         ...state,
         isLoading: false,
@@ -54,7 +54,7 @@ export default function filmsReducer(state = initialState, action) {
         ...state,
         isLoading: true
       };
-    case ` ADD_FILMS_FULFILED `:
+    case ` ADD_FILMS_FULFILLED `:
       return {
         ...state,
         isLoading: false,
